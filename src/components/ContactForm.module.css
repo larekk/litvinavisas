@@ -1,0 +1,66 @@
+.form { width:100%; padding:clamp(23px,3vw,38px); color:#f3f1ea; background:#202c3c; border:1px solid #46546a; box-shadow:0 18px 45px #05080e3d; border-radius:14px; }
+.heading { margin-bottom:24px; }
+.eyebrow { display:block; color:#dbb86f; font-size:11px; font-weight:600; letter-spacing:.12em; }
+.heading h3 { font-size:clamp(25px,2.3vw,33px); margin:9px 0 7px; letter-spacing:-.02em; }
+.heading p { color:#c9cbd1; font-size:14px; line-height:1.55; margin:0; }
+.fields { display:grid; gap:17px; }
+.field { display:flex; flex-direction:column; gap:8px; }
+.field label,.methods legend { font-size:13px; font-weight:500; color:#f0edf0; margin-bottom:1px; }
+.field label>span,.methods legend>span { color:#e7ba66; }
+.field input,.field textarea { font:inherit; color:#faf8f2; background:#111b2a; border:1px solid #526074; border-radius:7px; padding:13px 14px; width:100%; outline:none; transition:border-color .2s,box-shadow .2s; }
+.field input::placeholder,.field textarea::placeholder { color:#9da7b5; }
+.field input:focus,.field textarea:focus { border-color:#e6bd74; box-shadow:0 0 0 3px #e6bd7429; }
+.field textarea { min-height:92px; resize:vertical; }
+.optional { font-size:12px; font-weight:400; color:#b6bdc6!important; }
+.methods { border:0; margin:0; padding:0; min-width:0; }
+.methods legend { padding:0 0 11px; }
+.methodOptions { display:flex; flex-wrap:wrap; gap:7px; }
+.methodOption { cursor:pointer; display:inline-flex; align-items:center; padding:9px 12px; border-radius:5px; border:1px solid #647184; color:#d4d9e1; font-size:12px; line-height:1.2; transition:background .2s,color .2s,border-color .2s; }
+.methodOption input { position:absolute; width:1px; height:1px; opacity:0; }
+.methodOption:has(input:focus-visible) { outline:2px solid #e7bd71; outline-offset:3px; }
+.methodOption:hover { border-color:#e2b66b; }
+.selected { color:#111928; background:#e8bf79; border-color:#e8bf79; font-weight:600; }
+.consent { display:flex; align-items:flex-start; gap:10px; margin-top:21px; color:#bcc5d0; font-size:11px; line-height:1.55; cursor:pointer; }
+.consent input { margin:3px 0 0; accent-color:#e8bf79; flex-shrink:0; width:15px; height:15px; }
+.consent a,.fallback a { color:#f1c982; border-bottom:1px solid currentColor; }
+.submit { display:flex; align-items:center; justify-content:space-between; width:100%; gap:12px; margin-top:21px; border:0; border-radius:7px; padding:16px 19px; background:#e9be77; color:#171b23; font:inherit; font-weight:650; font-size:15px; cursor:pointer; transition:background .2s,transform .2s; }
+.submit:hover:not(:disabled) { background:#ffd394; transform:translateY(-2px); }
+.submit:disabled { opacity:.7; cursor:wait; }
+.submit span { font-size:22px; line-height:1; }
+.status { margin:0; min-height:0; font-size:13px; line-height:1.5; }
+.status:not(:empty) { margin-top:13px; padding:10px 12px; border-radius:6px; }
+.success { color:#c9f0d1; background:#173a2a; }
+.error { color:#ffd4cc; background:#4e2b2c; }
+.fallback { color:#b5bdc9; font-size:12px; line-height:1.6; margin:11px 0 0; }
+.compact { max-width:670px; margin:0 auto; }
+@media(max-width:520px){ .form{padding:23px 17px;} .methodOption{flex:1;justify-content:center;} }
+
+.honeypot { position:absolute; left:-99999px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+/* Light theme preserves the gold submit button but changes every form surface. */
+:global(html[data-theme="light"]) .form { color:#192638; background:#fffdf9; border-color:#ded7c8; box-shadow:0 16px 35px rgba(17,32,50,.08); }
+:global(html[data-theme="light"]) .eyebrow { color:#957323; }
+:global(html[data-theme="light"]) .heading h3 { color:#152238; }
+:global(html[data-theme="light"]) .heading p { color:#57616c; }
+:global(html[data-theme="light"]) .field label,
+:global(html[data-theme="light"]) .methods legend { color:#18283b; }
+:global(html[data-theme="light"]) .field label>span,
+:global(html[data-theme="light"]) .methods legend>span { color:#ac7c1c; }
+:global(html[data-theme="light"]) .field input,
+:global(html[data-theme="light"]) .field textarea { color:#1a293a; background:#fff; border-color:#c7c2b8; }
+:global(html[data-theme="light"]) .field input::placeholder,
+:global(html[data-theme="light"]) .field textarea::placeholder { color:#6f7782; }
+:global(html[data-theme="light"]) .field input:focus,
+:global(html[data-theme="light"]) .field textarea:focus { border-color:#ac862f; box-shadow:0 0 0 3px #cba65827; }
+:global(html[data-theme="light"]) .optional,
+:global(html[data-theme="light"]) .consent,
+:global(html[data-theme="light"]) .fallback { color:#606c7b!important; }
+:global(html[data-theme="light"]) .methodOption { border-color:#cfc7b6; color:#2c3745; }
+:global(html[data-theme="light"]) .methodOption:hover { border-color:#ac862f; }
+:global(html[data-theme="light"]) .selected { color:#171b22; background:#edc783; border-color:#d6a84d; }
+:global(html[data-theme="light"]) .consent a,
+:global(html[data-theme="light"]) .fallback a { color:#80621d; }
+:global(html[data-theme="light"]) .submit { background:#cda04a; color:#111927; }
+:global(html[data-theme="light"]) .submit:hover:not(:disabled) { background:#e6b964; }
+:global(html[data-theme="light"]) .success { color:#155632; background:#e3f5e8; }
+:global(html[data-theme="light"]) .error { color:#812c20; background:#fce7e2; }

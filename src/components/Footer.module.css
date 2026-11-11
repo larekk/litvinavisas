@@ -1,0 +1,16 @@
+.footer { background:#101722; color:#d0d5de; border-top:1px solid #2e3849; }
+.inner { display:flex; align-items:center; gap:clamp(18px,2.5vw,38px); justify-content:space-between; min-height:96px; padding-top:18px; padding-bottom:18px; }
+.legal { display:flex; flex-wrap:wrap; align-items:center; column-gap:clamp(14px,1.8vw,29px); row-gap:10px; font-size:12px; font-weight:500; }
+.contacts { display:flex; flex-wrap:wrap; align-items:center; gap:9px 16px; font-size:12px; color:#ddbb77; }
+.legal a:hover,.contacts a:hover,.top:hover { color:#f1ce91; }
+.top { display:inline-flex; align-items:center; gap:8px; flex-shrink:0; font-size:12px; font-weight:500; white-space:nowrap; }
+.top span { font-size:21px; font-weight:300; line-height:1; }
+@media(max-width:1100px){.inner{flex-wrap:wrap;justify-content:flex-start;row-gap:11px}.legal{flex:1 1 100%}.top{margin-left:auto}}
+@media(max-width:590px){.inner{gap:14px;padding-top:22px;padding-bottom:22px}.legal{flex-direction:column;align-items:flex-start;gap:12px}.contacts{flex-direction:column;align-items:flex-start;gap:8px}.top{margin-left:auto;align-self:flex-end}}
+
+/* Light theme: same compact footer, adjusted contrast. */
+:global(html[data-theme="light"]) .footer { background:#fff; color:#292b33; border-top-color:#ebe5dc; }
+:global(html[data-theme="light"]) .contacts { color:#887021; }
+:global(html[data-theme="light"]) .legal a:hover,
+:global(html[data-theme="light"]) .contacts a:hover,
+:global(html[data-theme="light"]) .top:hover { color:#a68026; }
