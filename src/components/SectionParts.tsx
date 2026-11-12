@@ -5,7 +5,7 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="eyebrow">{children}</p>;
 }
 
-export function CtaBand({ title = "Расскажите о своей поездке", description = "Опишите свою ситуацию — я изучу ваш запрос и подскажу, с чего начать." }: { title?: string; description?: string }) {
+export function CtaBand({ title = "Расскажите о своей поездке", description = "Опишите свою ситуацию — мы изучим ваш запрос и подскажем, с чего начать." }: { title?: string; description?: string }) {
   return (
     <section className="cta-band">
       <div className="container cta-inner">
@@ -16,7 +16,7 @@ export function CtaBand({ title = "Расскажите о своей поезд
   );
 }
 
-export function Steps({ title = "Как я работаю" }: { title?: string }) {
+export function Steps({ title = "Как мы работаем" }: { title?: string }) {
   return (
     <section className="section">
       <div className="container">

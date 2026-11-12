@@ -10,9 +10,10 @@ export default function Footer() {
           <Link href="/legal/agreement">Договор об оказании услуг</Link>
           <Link href="/legal/offer">Публичная оферта</Link>
         </nav>
-        <div className={styles.contacts} aria-label="Контакты Екатерины">
+        <div className={styles.contacts} aria-label="Контакты VIZERA">
           <a href="mailto:vizera@gmail.com">vizera@gmail.com</a>
           <a href="https://t.me/KK4TI" target="_blank" rel="noopener noreferrer">Telegram @KK4TI</a>
+          <a href="tel:+79167229053">+7 916 722-90-53</a>
           <a href="tel:+375292773076">+375 29 277-30-76</a>
         </div>
         <a className={styles.top} href="#top">Наверх <span aria-hidden="true">↑</span></a>

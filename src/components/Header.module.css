@@ -98,3 +98,9 @@ a.socialIcon:hover { background:#997d23; }
 :global(html[data-theme="dark"]) .mobileSub { background:#1c293a; }
 :global(html[data-theme="dark"]) .mobileNav .mobileContact { color:#e8bf7c; }
 }
+
+/* Reviews appear in navigation, but are not clickable before the channel is provided. */
+.pendingLink { opacity:.55; cursor:default; }
+@media(max-width:920px) { .mobileNav>span.pendingLink { display:block; padding:14px 0; border-bottom:1px solid #eee8dd; font-size:15px; } }
+:global(html[data-theme="dark"]) .mobileNav>span.pendingLink { border-color:#3f4959; }
+@media(min-width:921px) and (max-width:1190px) { .desktopNav { gap:11px; } .actions { gap:7px; } .desktopCta { padding:0 14px; margin-left:4px; } }

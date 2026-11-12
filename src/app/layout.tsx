@@ -5,7 +5,7 @@ import "./globals.css";
 import "./dark-theme.css";
 
 export const metadata: Metadata = {
-  title: { default: "LITVINAVISAS — визовое сопровождение", template: "%s | LITVINAVISAS" },
+  title: { default: "VIZERA — визовое сопровождение", template: "%s | VIZERA" },
   description: "Визовые консультации и сопровождение с учётом гражданства, места проживания и цели поездки.",
   robots: { index: false, follow: false }, // убрать после завершения миграции и SEO-проверки
 };
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 // Default is dark, matching the previous site version.
 const themeInitScript = `(() => {
   try {
-    const stored = localStorage.getItem("litvinavisas-theme");
+    const stored = localStorage.getItem("vizera-theme") ?? localStorage.getItem("litvinavisas-theme");
     document.documentElement.dataset.theme = stored === "light" ? "light" : "dark";
   } catch (_) { document.documentElement.dataset.theme = "dark"; }
 })();`;

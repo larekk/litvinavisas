@@ -1,4 +1,4 @@
-name: Publish LITVINAVISAS to GitHub Pages
+name: Publish VIZERA to GitHub Pages
 
 on:
   push:
@@ -30,9 +30,8 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: '1'
           NEXT_PUBLIC_BASE_PATH: /litvinavisas
-          # To enable real form submissions, set this repository variable
-          # in Settings -> Secrets and variables -> Actions -> Variables.
           NEXT_PUBLIC_CONTACT_FORM_ENDPOINT: ${{ vars.NEXT_PUBLIC_CONTACT_FORM_ENDPOINT }}
+          NEXT_PUBLIC_REVIEWS_TG_URL: ${{ vars.NEXT_PUBLIC_REVIEWS_TG_URL }}
         run: npm run build
       - name: Keep GitHub Pages static assets intact
         run: touch out/.nojekyll

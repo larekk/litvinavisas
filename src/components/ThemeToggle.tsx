@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
-const STORAGE_KEY = "litvinavisas-theme";
+const STORAGE_KEY = "vizera-theme";
 
 export default function ThemeToggle({ className }: { className?: string }) {
   const [theme, setTheme] = useState<Theme>("dark");

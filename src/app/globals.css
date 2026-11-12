@@ -197,7 +197,7 @@ p { line-height: 1.65; }
 @media(prefers-reduced-motion:reduce) { html {scroll-behavior:auto;} *,*:before,*:after {transition:none!important;animation:none!important;} }
 
 /* ──────────────────────────────────────────────────────────────────────────
-   LITVINAVISAS — visual system from the supplied Tilda screenshots (revision 2)
+   VIZERA — visual system from the supplied Tilda screenshots (revision 2)
    The previous layout classes remain available to inner pages.
    ────────────────────────────────────────────────────────────────────────── */
 

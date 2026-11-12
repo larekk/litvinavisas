@@ -20,25 +20,12 @@ export default function HomePage() {
     <section className="home-hero" aria-labelledby="home-title">
       <div className="home-hero__photo" aria-hidden="true" style={{ "--hero-image": `url("${assetBasePath}/images/etretat-hero.webp")` } as React.CSSProperties} />
       <div className="home-hero__content">
-        <h1 id="home-title">LITVINAVISAS Travel Agency</h1>
-        <p>✦ Путешествуй с LITVINAVISAS ✦</p>
+        <h1 id="home-title">VIZERA Travel Agency</h1>
+        <p>✦ Путешествуй с VIZERA ✦</p>
       </div>
-      <a className="home-hero__down" href="#about" aria-label="Прокрутить к информации обо мне">
+      <a className="home-hero__down" href="#services" aria-label="Прокрутить к услугам">
         <svg width="40" height="22" viewBox="0 0 40 22" fill="none" aria-hidden="true"><path d="m3 2 17 17L37 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
       </a>
-    </section>
-
-    <section className="home-about" id="about" aria-labelledby="about-title">
-      <div className="home-about__content">
-        <p className="home-about__eyebrow">НЕМНОГО ОБО МНЕ</p>
-        <h2 id="about-title">Как появилась LITVINAVISAS</h2>
-        <div className="home-about__body">
-          <p>Больше семи лет я занимаюсь визами. Начинала работать в найме, изучала требования разных стран, помогала готовить документы — от обычных туристических поездок до сложных, нестандартных случаев.</p>
-          <p>Со временем у меня появились постоянные клиенты, опыт и понимание того, какой я хочу видеть свою работу.<br />Так появилась LITVINAVISAS — мой проект, в котором я могу уделить внимание каждой истории.</p>
-          <p>Сегодня я лично разбираю визовые вопросы, проверяю документы и ищу решения с учётом обстоятельств каждого клиента.</p>
-          <p className="home-about__signature"><strong>Екатерина</strong><br />Основательница LITVINAVISAS</p>
-        </div>
-      </div>
     </section>
 
     <ParallaxPhoto
@@ -46,11 +33,11 @@ export default function HomePage() {
       label="Зелёные альпийские луга и горы"
     />
 
-    <section className="section service-section">
+    <section className="section service-section" id="services">
       <div className="container">
-        <Eyebrow>ЧЕМ Я МОГУ БЫТЬ ПОЛЕЗНА</Eyebrow>
+        <Eyebrow>ЧЕМ МЫ МОЖЕМ ПОМОЧЬ</Eyebrow>
         <h2 className="wide-title">Разные гражданства,<br />страны проживания<br /><span>и визовые направления.</span></h2>
-        <p className="service-copy">Я помогаю оформлять туристические, гостевые, учебные, деловые и другие визы. Учитываю ваш паспорт, страну проживания и особенности подачи документов.</p>
+        <p className="service-copy">Мы помогаем оформлять туристические, гостевые, учебные, деловые и другие визы. Учитываем ваш паспорт, страну проживания и особенности подачи документов. Екатерина лично курирует сложные вопросы.</p>
       </div>
     </section>
 
@@ -63,8 +50,8 @@ export default function HomePage() {
       </div>
     </section>
 
-    <Steps title="Этапы работы со мной" />
-    <section className="section rules-preview"><div className="container rules-preview-inner"><div><Eyebrow>ВАЖНО ЗНАТЬ</Eyebrow><h2>Работаю внимательно,<br />а не 24/7.</h2></div><div><p>Я заранее согласовываю с вами сроки, формат общения и условия работы, чтобы каждый этап был понятным.</p><Link href="/work-rules" className="text-link">Правила работы со мной ↗</Link></div></div></section>
-    <CtaBand title="Кажется, с визой всё сложно?" description="Возможно, не настолько. Расскажите о поездке — я разберусь в вашей ситуации и подскажу, с чего начать." />
+    <Steps title="Этапы нашей работы" />
+    <section className="section rules-preview"><div className="container rules-preview-inner"><div><Eyebrow>ВАЖНО ЗНАТЬ</Eyebrow><h2>Правила работы</h2></div><div><p>Мы не обещаем ответов 24/7 и не гонимся за скоростью в ущерб качеству. Согласовываем сроки и остаёмся на связи на каждом важном этапе.</p><Link href="/work-rules" className="text-link">Подробнее о правилах ↗</Link></div></div></section>
+    <CtaBand title="Кажется, с визой всё сложно?" description="Возможно, не настолько. Расскажите о поездке — мы разберёмся в вашей ситуации и подскажем, с чего начать." />
   </>;
 }
