@@ -1,0 +1,15 @@
+.document { width: min(850px, 100%); margin: 0 auto; font-size: 16px; color: var(--ink); }
+.preamble { display: grid; gap: 14px; margin: 0 0 44px; }
+.preamble p, .section p { font-size: 16px; line-height: 1.8; margin: 0; overflow-wrap: anywhere; }
+.city { font-weight: 600; }
+.section { border-top: 1px solid var(--line); padding-top: 28px; margin-top: 35px; }
+.section h2 { font-size: clamp(19px, 2.3vw, 25px); line-height: 1.35; font-weight: 600; letter-spacing: 0; margin: 0 0 23px; color: var(--ink); }
+.section p + p { margin-top: 13px; }
+.section .subpoint { padding-left: 16px; }
+.editorNote { border-left: 3px solid var(--orange); background: var(--soft); padding: 15px 20px; border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.6; }
+@media (max-width: 720px) {
+ .document, .preamble p, .section p { font-size: 15px; }
+ .preamble { gap: 12px; margin-bottom: 32px; }
+ .section { margin-top: 26px; padding-top: 22px; }
+ .section .subpoint { padding-left: 8px; }
+}
