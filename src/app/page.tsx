@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { CtaBand, Eyebrow, Steps } from "@/components/SectionParts";
-import ParallaxPhoto from "@/components/ParallaxPhoto";
 
 const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -27,11 +26,6 @@ export default function HomePage() {
         <svg width="40" height="22" viewBox="0 0 40 22" fill="none" aria-hidden="true"><path d="m3 2 17 17L37 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
       </a>
     </section>
-
-    <ParallaxPhoto
-      imageUrl="https://images.unsplash.com/photo-1671800556283-bdd5c461c793?auto=format&fit=crop&w=2400&q=85"
-      label="Зелёные альпийские луга и горы"
-    />
 
     <section className="section service-section" id="services">
       <div className="container">
