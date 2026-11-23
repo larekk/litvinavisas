@@ -363,17 +363,23 @@ html[data-theme="dark"] { color-scheme: dark; }
 }
 .home-hero h1 {
   color: #fff;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, .7), 0 1px 4px rgba(0, 0, 0, .5);
+  -webkit-text-stroke: 0.85px rgba(12, 24, 42, .93);
+  paint-order: stroke fill;
+  text-shadow: 0 1px 5px rgba(10, 20, 36, .5);
 }
 .home-hero p {
   color: #fff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, .7), 0 1px 3px rgba(0, 0, 0, .5);
+  -webkit-text-stroke: 0.5px rgba(12, 24, 42, .93);
+  paint-order: stroke fill;
+  text-shadow: 0 1px 3px rgba(10, 20, 36, .5);
 }
 html[data-theme="dark"] .home-hero h1 {
   color: #152033;
-  text-shadow: 0 1px 8px rgba(255, 255, 255, .35);
+  -webkit-text-stroke: 0.85px rgba(255, 255, 255, .95);
+  text-shadow: 0 1px 4px rgba(255, 255, 255, .42);
 }
 html[data-theme="dark"] .home-hero p {
   color: #1d2d43;
-  text-shadow: 0 1px 6px rgba(255, 255, 255, .3);
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, .95);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, .42);
 }
