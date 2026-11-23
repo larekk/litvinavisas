@@ -5,12 +5,12 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="eyebrow">{children}</p>;
 }
 
-export function CtaBand({ title = "Расскажите о своей поездке", description = "Опишите свою ситуацию — мы изучим ваш запрос и подскажем, с чего начать." }: { title?: string; description?: string }) {
+export function CtaBand({ title = "Расскажите о своей поездке", description = "Опишите свою ситуацию — мы изучим ваш запрос и подскажем, с чего начать.", minimal = false }: { title?: string; description?: string; minimal?: boolean }) {
   return (
     <section className="cta-band">
       <div className="container cta-inner">
-        <div><Eyebrow>ОСТАЛИСЬ ВОПРОСЫ?</Eyebrow><h2>{title}</h2><p>{description}</p></div>
-        <ContactForm />
+        <div>{!minimal && <Eyebrow>ОСТАЛИСЬ ВОПРОСЫ?</Eyebrow>}<h2>{title}</h2>{!minimal && <p>{description}</p>}</div>
+        <ContactForm hideIntro={minimal} />
       </div>
     </section>
   );
@@ -20,11 +20,11 @@ export function Steps({ title = "Как мы работаем" }: { title?: stri
   return (
     <section className="section">
       <div className="container">
-        <Eyebrow>ПРОСТО И ПО ДЕЛУ</Eyebrow>
-        <div className="section-heading"><h2>{title}</h2><p>Четыре этапа работы: на каждом вы будете понимать, что происходит дальше.</p></div>
+        <Eyebrow>КАК УСТРОЕНА РАБОТА</Eyebrow>
+        <div className="section-heading"><h2>{title}</h2></div>
         <div className="step-grid">{steps.map((step) => (
           <article className="step" key={step.num}>
-            <span className="step-num">{step.num} / 04</span><h3>{step.title}</h3><p>{step.description}</p>
+            <span className="step-num">{step.num} /</span><h3>{step.title}</h3><p>{step.description}</p>
           </article>
         ))}</div>
       </div>

@@ -13,7 +13,7 @@ const hints: Record<Method, string> = {
   Max: "Ссылка на профиль или номер телефона",
 };
 
-export default function ContactForm({ compact = false }: { compact?: boolean }) {
+export default function ContactForm({ compact = false, hideIntro = false }: { compact?: boolean; hideIntro?: boolean }) {
   const formId = useId();
   const [method, setMethod] = useState<Method>("Telegram");
   const [name, setName] = useState("");
@@ -77,7 +77,7 @@ export default function ContactForm({ compact = false }: { compact?: boolean }) 
       <div className={styles.heading}>
         <span className={styles.eyebrow}>ФОРМА ОБРАТНОЙ СВЯЗИ</span>
         <h3>Оставить заявку</h3>
-        <p>Расскажите о вашей поездке или вопросе — мы разберёмся и подскажем, чем можем помочь.</p>
+        {!hideIntro && <p>Расскажите о вашей поездке или вопросе — мы разберёмся и подскажем, чем можем помочь.</p>}
       </div>
       <div className={styles.fields}>
         <div className={styles.field}>
