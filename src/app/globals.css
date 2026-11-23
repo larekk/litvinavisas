@@ -355,13 +355,9 @@ html[data-theme="dark"] { color-scheme: dark; }
   .feature-card:hover .feature-card__photo { transform: none; }
 }
 
-/* Homepage hero: sharp photo in both themes, no text panel.
-   Light theme: white lettering over the darkened image.
-   Dark theme: dark lettering over the brightened image. */
+/* Hero photo stays completely untouched, regardless of theme. Only text colors differ. */
 .home-hero__photo {
-  background-image:
-    linear-gradient(180deg, rgba(10, 21, 37, .27), rgba(10, 21, 37, .34)),
-    var(--hero-image);
+  background-image: var(--hero-image);
   filter: none;
   transform: none;
 }
@@ -372,11 +368,6 @@ html[data-theme="dark"] { color-scheme: dark; }
 .home-hero p {
   color: #fff;
   text-shadow: 0 2px 12px rgba(0, 0, 0, .7), 0 1px 3px rgba(0, 0, 0, .5);
-}
-html[data-theme="dark"] .home-hero__photo {
-  background-image:
-    linear-gradient(180deg, rgba(249, 251, 255, .64), rgba(236, 242, 250, .54)),
-    var(--hero-image);
 }
 html[data-theme="dark"] .home-hero h1 {
   color: #152033;
