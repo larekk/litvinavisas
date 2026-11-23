@@ -486,3 +486,10 @@ html[data-theme="dark"] .home-hero p {
   .consultation-hero__visual, .contacts-hero__visual { aspect-ratio: 4 / 3; }
   .consultation-pricing { padding:25px 20px; }
 }
+
+/* Consultation: compact practical information, no promotional card headline. */
+.consultation-pricing { border-top: 2px solid var(--orange); }
+.consultation-pricing__item:first-child { border-top: 0; padding-top: 5px; }
+.consultation-pricing__item span { margin-bottom: 12px; }
+.consultation-pricing__item strong { font-size: clamp(17px, 1.7vw, 22px); line-height: 1.5; font-weight: 500; }
+.consultation-pricing__note { font-weight: 500; font-size: 16px; line-height: 1.55; }
