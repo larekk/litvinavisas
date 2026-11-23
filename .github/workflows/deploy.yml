@@ -28,7 +28,7 @@ jobs:
         run: node scripts/download-unsplash-images.mjs
       - name: Commit local image files
         run: |
-          git add public/images/hero-etretat.jpg public/images/destinations/*.jpg
+          git add public/images/hero-etretat.jpg public/images/hero-etretat-muted.jpg public/images/destinations/*.jpg
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

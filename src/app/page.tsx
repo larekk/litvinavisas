@@ -17,7 +17,7 @@ const featured = [
 export default function HomePage() {
   return <>
     <section className="home-hero" aria-labelledby="home-title">
-      <div className="home-hero__photo" aria-hidden="true" style={{ "--hero-image": `url("${assetBasePath}/images/hero-etretat.jpg")` } as React.CSSProperties} />
+      <div className="home-hero__photo" aria-hidden="true" style={{ "--hero-image": `url("${assetBasePath}/images/hero-etretat-muted.jpg")` } as React.CSSProperties} />
       <div className="home-hero__content">
         <h1 id="home-title">VIZERA</h1>
         <p>✦ VISA CONSULTING ✦</p>

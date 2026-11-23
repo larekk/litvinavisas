@@ -5,6 +5,7 @@ import { join } from "node:path";
 
 const assets = [
   { file: "hero-etretat.jpg", photo: "photo-1621847468516-1ed5d0df56fe", width: 2600, quality: 87 },
+  { file: "hero-etretat-muted.jpg", photo: "photo-1638470057389-3b2447707933", width: 2600, height: 1600, quality: 86 },
   { file: "destinations/europe.jpg", photo: "photo-1431274172761-fca41d930114", width: 1400, quality: 80 },
   { file: "destinations/usa.jpg", photo: "photo-1664995188057-8f13f472c1e7", width: 1400, quality: 80 },
   { file: "destinations/uk.jpg", photo: "photo-1771433630148-f1729b6053c7", width: 1400, quality: 80 },
@@ -26,7 +27,7 @@ async function fetchPhoto(asset) {
   } catch {}
   await mkdir(join("public", "images", asset.file.split("/").slice(0, -1).join("/")), { recursive: true });
   const url = "https://images.unsplash.com/" + asset.photo
-    + "?fm=jpg&fit=crop&auto=compress&w=" + asset.width + "&q=" + asset.quality;
+    + "?fm=jpg&fit=crop&auto=compress&w=" + asset.width + (asset.height ? "&h=" + asset.height : "") + "&q=" + asset.quality;
 
   for (let attempt=1;attempt<=3;attempt++) {
     try {
