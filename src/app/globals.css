@@ -220,7 +220,7 @@ p { line-height:1.6; }
 .home-hero__photo { position:absolute; z-index:-1; inset:0; background-image:linear-gradient(rgba(15,30,46,.055),rgba(15,30,46,.055)),var(--hero-image); background-position:center 49%; background-size:cover; background-repeat:no-repeat; }
 .home-hero__content { text-align:center; width:min(95%,1050px); padding:0 20px; transform:translateY(-45px); }
 .home-hero h1 { font-size:clamp(44px,5.1vw,75px); letter-spacing:.025em; line-height:1.18; margin:0; font-weight:600; color:#101c2e; text-shadow:0 1px 10px #ffffff22; }
-.home-hero p { margin:33px 0 0; color:#182238; font-size:clamp(16px,1.35vw,22px); line-height:1.4; font-weight:600; letter-spacing:.006em; }
+.home-hero p { margin:21px 0 0; color:#182238; font-size:clamp(16px,1.35vw,22px); line-height:1.4; font-weight:600; letter-spacing:.006em; }
 .home-hero__down { position:absolute; bottom:41px; left:50%; transform:translateX(-50%); display:flex; align-items:center; justify-content:center; width:50px; height:40px; color:#fff; transition:transform .2s; }
 .home-hero__down:hover { transform:translate(-50%,5px); }
 
@@ -267,7 +267,7 @@ p { line-height:1.6; }
  .home-hero__photo { background-position:32% center; }
  .home-hero__content { transform:translateY(-28px); padding:0 8px; }
  .home-hero h1 { font-size:clamp(36px,8vw,57px); letter-spacing:0; }
- .home-hero p { font-size:clamp(15px,3.5vw,19px); margin-top:24px; }
+ .home-hero p { font-size:clamp(15px,3.5vw,19px); margin-top:14px; }
  .home-hero__down { bottom:25px; }
  .home-about { padding:75px 23px 95px; }
  .home-about h2 { font-size:27px; margin-bottom:29px; }
