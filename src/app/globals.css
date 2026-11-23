@@ -305,3 +305,52 @@ html[data-theme="dark"] { color-scheme: dark; }
 .cta-band { padding:clamp(75px,8vw,112px) 0; }
 @media(max-width:850px) { .cta-inner,.contacts-layout {grid-template-columns:1fr} .cta-inner > form,.contacts-layout > form {max-width:660px; width:100%;} }
 @media(max-width:720px) { .cta-inner {gap:30px;} .cta-band {padding:72px 0;} }
+
+
+/* VIZERA · local Unsplash photography in destination cards */
+.feature-card {
+  isolation: isolate;
+  background: #192637;
+  overflow: hidden;
+  border-color: rgba(255,255,255,.18);
+}
+.feature-card__photo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform .55s cubic-bezier(.2,.65,.2,1);
+}
+.feature-card__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,rgba(8,17,29,.35) 0%,rgba(8,17,29,.05) 43%,rgba(8,17,29,.76) 100%);
+}
+.feature-card:hover .feature-card__photo, .feature-card:focus-visible .feature-card__photo { transform: scale(1.07); }
+.feature-card .feature-top { color: #fff; text-shadow: 0 1px 5px rgba(0,0,0,.4); }
+.feature-card .feature-arrow { color: #f2d6a2; }
+.feature-card h3, html[data-theme="dark"] .feature-card h3 { color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.5); font-weight: 600; }
+.feature-card .feature-mark { display: none; }
+.country-row__identity { display:flex; align-items:center; gap:17px; min-width:0; }
+.country-row__thumb {
+  flex: 0 0 88px;
+  width: 88px;
+  height: 62px;
+  border-radius: 5px;
+  background-color: #253247;
+  background-size: cover;
+  background-position: center;
+}
+.country-row--photo { min-height:100px; }
+@media (max-width:460px) {
+  .country-row__identity { gap:11px; }
+  .country-row__thumb { flex-basis:68px; width:68px; height:52px; }
+  .country-row--photo { font-size:15px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .feature-card__photo { transition: none; }
+  .feature-card:hover .feature-card__photo { transform: none; }
+}
