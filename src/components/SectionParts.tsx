@@ -5,12 +5,12 @@ export function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="eyebrow">{children}</p>;
 }
 
-export function CtaBand({ title = "Расскажите о своей поездке", description = "Опишите свою ситуацию — мы изучим ваш запрос и подскажем, с чего начать.", minimal = false }: { title?: string; description?: string; minimal?: boolean }) {
+export function CtaBand({ title = "Расскажите о своей поездке", description = "Опишите свою ситуацию — мы изучим ваш запрос и подскажем, с чего начать.", minimal = false, submitLabel }: { title?: string; description?: string; minimal?: boolean; submitLabel?: string }) {
   return (
     <section className="cta-band">
       <div className="container cta-inner">
         <div>{!minimal && <Eyebrow>ОСТАЛИСЬ ВОПРОСЫ?</Eyebrow>}<h2>{title}</h2>{!minimal && <p>{description}</p>}</div>
-        <ContactForm hideIntro={minimal} />
+        <ContactForm hideIntro={minimal} submitLabel={submitLabel} />
       </div>
     </section>
   );

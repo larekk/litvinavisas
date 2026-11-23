@@ -437,3 +437,52 @@ html[data-theme="dark"] .home-hero p {
   .rules-list__copy { grid-column: 2; }
   .rules-list__copy p { font-size: 15px; }
 }
+
+
+/* Consultation and contacts: editorial layout, local photos, responsive typography. */
+.consultation-hero { background: var(--soft); }
+.consultation-hero__grid,
+.contacts-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+  align-items: center;
+  gap: clamp(34px, 6vw, 96px);
+}
+.consultation-hero__copy h1 { font-size: clamp(42px, 6vw, 78px); line-height: 1.08; margin: 14px 0 32px; }
+.consultation-hero__copy p:not(.eyebrow) { font-size: clamp(16px, 1.35vw, 18px); line-height: 1.75; color: var(--muted); max-width: 600px; margin: 0 0 18px; }
+.consultation-hero__copy .consultation-hero__lead { font-size: clamp(23px, 2.4vw, 34px) !important; line-height: 1.37 !important; color: var(--ink) !important; font-weight: 500; margin-bottom: 29px !important; }
+.consultation-hero__visual, .contacts-hero__visual { min-width:0; overflow:hidden; border-radius: 4px; background: #c5c3b9; }
+.consultation-hero__visual { aspect-ratio: 4 / 4.5; }
+.contacts-hero__visual { aspect-ratio: 5 / 3.7; }
+.consultation-hero__visual img, .contacts-hero__visual img {
+  display:block; width:100%; height:100%; object-fit:cover; object-position:center;
+}
+.consultation-details__grid { display:grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: clamp(42px, 7vw, 120px); align-items:start; }
+.consultation-topics { margin: 28px 0 36px; padding-left: 24px; list-style:disc outside; }
+.consultation-topics li { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.55; padding: 8px 0 8px 7px; }
+.consultation-topics li::marker { color: var(--orange); }
+.consultation-details__topics > p:not(.eyebrow) { font-size:16px; line-height:1.75; color:var(--muted); max-width: 690px; margin: 0 0 17px; }
+.consultation-pricing { border-top:2px solid var(--orange); background: var(--soft); padding:clamp(25px,3vw,38px); }
+.consultation-pricing h2 { font-size: clamp(27px, 2.4vw, 36px); line-height:1.24; margin:9px 0 31px; }
+.consultation-pricing__item { padding:20px 0; border-top:1px solid var(--line); }
+.consultation-pricing__item span { display:block; font-size:14px; color:var(--muted); margin-bottom:9px; }
+.consultation-pricing__item strong { display:block; font-weight:600; font-size:23px; color:var(--ink); }
+.consultation-pricing__item p, .consultation-pricing__note { font-size:14px; line-height:1.6; color:var(--muted); margin:9px 0 0; }
+.consultation-pricing__note { padding-top:17px; border-top:1px solid var(--line); }
+.contacts-hero__grid > div:first-child { min-width:0; }
+.contacts-hero__grid h1 { margin-bottom:22px; }
+.contacts-hero__grid p:not(.eyebrow) { max-width:520px; line-height:1.7; }
+.contact-office-note { border-top:1px solid var(--line); margin-top:24px; padding-top:25px; }
+.contact-office-note p { font-size:16px; line-height:1.7; color:var(--muted); margin: 0 0 14px; }
+@media (max-width:850px) {
+  .consultation-hero__grid, .contacts-hero__grid, .consultation-details__grid { grid-template-columns:1fr; }
+  .consultation-hero__grid, .contacts-hero__grid { gap:35px; }
+  .consultation-hero__visual { aspect-ratio:16 / 9; }
+  .contacts-hero__visual { aspect-ratio:16 / 9; }
+  .consultation-details__grid { gap:45px; }
+}
+@media (max-width:520px) {
+  .consultation-hero__copy h1 { font-size:clamp(37px,10vw,52px); margin-bottom:24px; }
+  .consultation-hero__visual, .contacts-hero__visual { aspect-ratio: 4 / 3; }
+  .consultation-pricing { padding:25px 20px; }
+}

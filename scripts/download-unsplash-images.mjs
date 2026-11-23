@@ -4,6 +4,8 @@ import { mkdir, stat, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const assets = [
+  { file: "consultation-workspace.jpg", photo: "photo-1524850011238-e3d235c7d4c9", width: 1600, quality: 82 },
+  { file: "contacts-workspace.jpg", photo: "photo-1773158742082-6f26389f7492", width: 1600, quality: 82 },
   { file: "hero-etretat.jpg", photo: "photo-1621847468516-1ed5d0df56fe", width: 2600, quality: 87 },
   { file: "hero-etretat-muted.jpg", photo: "photo-1638470057389-3b2447707933", width: 2600, height: 1600, quality: 86 },
   { file: "destinations/europe.jpg", photo: "photo-1431274172761-fca41d930114", width: 1400, quality: 80 },

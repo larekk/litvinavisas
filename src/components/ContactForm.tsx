@@ -13,7 +13,7 @@ const hints: Record<Method, string> = {
   Max: "Ссылка на профиль или номер телефона",
 };
 
-export default function ContactForm({ compact = false, hideIntro = false }: { compact?: boolean; hideIntro?: boolean }) {
+export default function ContactForm({ compact = false, hideIntro = false, submitLabel }: { compact?: boolean; hideIntro?: boolean; submitLabel?: string }) {
   const formId = useId();
   const [method, setMethod] = useState<Method>("Telegram");
   const [name, setName] = useState("");
@@ -109,7 +109,7 @@ export default function ContactForm({ compact = false, hideIntro = false }: { co
         <input type="checkbox" required checked={consent} onChange={(event) => setConsent(event.target.checked)} />
         <span>Я согласен(на) на обработку персональных данных в соответствии с <Link href="/legal/privacy">политикой конфиденциальности</Link>.</span>
       </label>
-      <button className={styles.submit} type="submit" disabled={sending}>{sending ? "Отправляем…" : formEndpoint ? "Отправить заявку" : "Подготовить заявку"}<span aria-hidden="true">↗</span></button>
+      <button className={styles.submit} type="submit" disabled={sending}>{sending ? "Отправляем…" : submitLabel ?? (formEndpoint ? "Отправить заявку" : "Подготовить заявку")}<span aria-hidden="true">↗</span></button>
       <p role="status" aria-live="polite" className={`${styles.status} ${result?.ok ? styles.success : styles.error}`}>{result?.message ?? ""}</p>
       <p className={styles.fallback}>Или напишите нам в <a href="https://t.me/KK4TI" target="_blank" rel="noopener noreferrer">Telegram @KK4TI ↗</a></p>
     </form>

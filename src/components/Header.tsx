@@ -57,7 +57,7 @@ export default function Header() {
             </button>
             {visasOpen && (
               <div className={styles.dropdown} id="visas-menu">
-                <div><p className={styles.menuHeading}>По материкам</p>{regions.map((region) => <Link key={region.slug} href={`/visas/${region.slug}`} onClick={closeAll}>{region.title}</Link>)}</div>
+                <div><p className={styles.menuHeading}>География Виз</p>{regions.map((region) => <Link key={region.slug} href={`/visas/${region.slug}`} onClick={closeAll}>{region.title}</Link>)}</div>
                 <div><p className={styles.menuHeading}>Популярные страны</p>{countries.map((country) => <Link key={country.slug} href={`/visas/${country.slug}`} onClick={closeAll}>{country.name}</Link>)}<Link className={styles.allLink} href="/visas" onClick={closeAll}>Все направления ↗</Link></div>
               </div>
             )}
@@ -80,7 +80,7 @@ export default function Header() {
       </div>
       {mobileOpen && <nav className={styles.mobileNav} id="mobile-navigation" aria-label="Мобильная навигация">
         <Link onClick={closeAll} href="/">Главная</Link><Link onClick={closeAll} href="/visas">Все визы</Link>
-        <button className={styles.mobileSubToggle} type="button" onClick={() => setVisasOpen(!visasOpen)} aria-expanded={visasOpen} aria-controls="mobile-regions">Материки и страны <span>{visasOpen ? "−" : "+"}</span></button>
+        <button className={styles.mobileSubToggle} type="button" onClick={() => setVisasOpen(!visasOpen)} aria-expanded={visasOpen} aria-controls="mobile-regions">География Виз <span>{visasOpen ? "−" : "+"}</span></button>
         {visasOpen && <div className={styles.mobileSub} id="mobile-regions">{regions.map((region) => <Link key={region.slug} href={`/visas/${region.slug}`} onClick={closeAll}>{region.title}</Link>)}{countries.map((country) => <Link key={country.slug} href={`/visas/${country.slug}`} onClick={closeAll}>{country.name}</Link>)}</div>}
         <Link onClick={closeAll} href="/consultation">Консультация</Link><Link onClick={closeAll} href="/contacts">Контакты</Link>{validReviewsUrl ? <a href={validReviewsUrl} target="_blank" rel="noopener noreferrer" onClick={closeAll}>Отзывы ↗</a> : <span className={styles.pendingLink} title="Ссылка на Telegram-канал отзывов ещё не добавлена">Отзывы</span>}<Link onClick={closeAll} href="/about">О нас</Link><Link className={styles.mobileContact} onClick={closeAll} href="/contacts#contact-form">Оставить заявку ↗</Link>
       </nav>}
