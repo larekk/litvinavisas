@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { ruleItems } from "@/lib/data";
 import { CtaBand, Eyebrow } from "@/components/SectionParts";
 
-export const metadata: Metadata = { title: "Правила работы" };
+export const metadata: Metadata = { title: "Наш подход" };
 
 export default function WorkRulesPage() {
   return (
     <>
       <section className="page-hero">
         <div className="container">
-          <Eyebrow>НЕСКОЛЬКО СЛОВ О РАБОТЕ С НАМИ</Eyebrow>
-          <h1>Правила<br /><em>работы.</em></h1>
+          <Eyebrow>НАШ ПОДХОД</Eyebrow>
+          <h1>Несколько слов<br /><em>о работе с нами.</em></h1>
           <p>Нам важно, чтобы сотрудничество было понятным и комфортным для всех. У нас есть несколько простых принципов, о которых мы предпочитаем говорить заранее.</p>
         </div>
       </section>

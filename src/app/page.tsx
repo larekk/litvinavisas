@@ -27,27 +27,16 @@ export default function HomePage() {
       </a>
     </section>
 
-    <section className="section brand-intro" aria-labelledby="brand-intro-title">
-      <div className="container brand-intro__layout">
-        <div>
-          <Eyebrow>КОМАНДА VIZERA</Eyebrow>
-          <h2 id="brand-intro-title">За брендом —<br />опыт и люди.</h2>
-        </div>
-        <div className="brand-intro__details">
-          <p>VIZERA выросла из многолетней практики Екатерины. Сегодня над визовыми вопросами работает команда: мы внимательно изучаем каждую ситуацию, готовим документы и сопровождаем клиентов на разных этапах.</p>
-          <Link href="/about" className="text-link">Подробнее о нас ↗</Link>
-        </div>
-      </div>
-    </section>
-
     <section className="section service-section" id="services">
       <div className="container service-layout">
-        <div className="service-layout__left">
+        <div className="service-layout__headline">
           <Eyebrow>ЧЕМ МЫ МОЖЕМ ПОМОЧЬ</Eyebrow>
           <h2>Консультируем, готовим документы и сопровождаем оформление виз. Работаем с разными гражданствами, странами проживания и визовыми направлениями.</h2>
         </div>
-        <div className="service-layout__right">
+        <div className="service-layout__left">
           <h3>В визовых вопросах очевидное не всегда верное.</h3>
+        </div>
+        <div className="service-layout__right">
           <p>Список документов можно найти в интернете. Но далеко не всегда понятно, какие правила относятся именно к вам и с чего вообще начинать.</p>
           <p>Мы задаём много вопросов. Иногда даже больше, чем вы ожидали. Не из любопытства — нам важно разобраться в вашей ситуации и заметить возможные сложности ещё до подачи.</p>
         </div>
@@ -75,6 +64,6 @@ export default function HomePage() {
         </div>
       </div>
     </section>
-    <CtaBand title="Расскажите нам о своей поездке" minimal />
+    <CtaBand title="Кажется, с визой всё сложно?" description="Возможно, не настолько. Расскажите о поездке — мы разберёмся в вашей ситуации и подскажем, с чего начать." />
   </>;
 }

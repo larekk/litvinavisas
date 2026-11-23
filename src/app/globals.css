@@ -380,49 +380,31 @@ html[data-theme="dark"] .home-hero p {
 
 
 /* Homepage editorial sections: people, services, principles. */
-.brand-intro {
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
-}
-.brand-intro__layout {
-  display: grid;
-  grid-template-columns: minmax(0, .95fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(35px, 7vw, 110px);
-}
-.brand-intro h2 {
-  max-width: 600px;
-  font-size: clamp(36px, 4.2vw, 64px);
-  line-height: 1.13;
-  margin: 0;
-}
-.brand-intro__details { max-width: 520px; }
-.brand-intro__details p {
-  color: var(--muted);
-  font-size: clamp(17px, 1.5vw, 20px);
-  line-height: 1.75;
-  margin-bottom: 27px;
-}
 .service-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
   gap: clamp(32px, 6vw, 104px);
   align-items: start;
 }
-.service-layout__left h2 {
-  max-width: 670px;
-  font-size: clamp(31px, 3.5vw, 51px);
-  line-height: 1.26;
+.service-layout__headline {
+  grid-column: 1 / -1;
+  max-width: 1100px;
+  margin-bottom: clamp(10px, 2vw, 26px);
+}
+.service-layout__headline h2 {
+  font-size: clamp(31px, 3.8vw, 55px);
+  line-height: 1.23;
   font-weight: 500;
   margin: 0;
 }
-.service-layout__right { max-width: 550px; padding-top: 37px; }
-.service-layout__right h3 {
-  font-size: clamp(24px, 2.1vw, 31px);
-  line-height: 1.32;
-  margin: 0 0 27px;
+.service-layout__left h3 {
+  font-size: clamp(26px, 2.6vw, 39px);
+  line-height: 1.33;
+  font-weight: 500;
+  margin: 0;
   color: var(--ink);
 }
+.service-layout__right { max-width: 550px; padding-top: 0; }
 .service-layout__right p {
   font-size: clamp(16px, 1.3vw, 18px);
   line-height: 1.78;
@@ -445,14 +427,12 @@ html[data-theme="dark"] .home-hero p {
 .rules-list__copy { max-width: 630px; }
 .rules-list__copy p + p { margin-top: 16px; }
 @media (max-width: 850px) {
-  .brand-intro__layout,
   .service-layout { grid-template-columns: minmax(0,1fr); gap: 27px; }
-  .brand-intro__details, .service-layout__right { max-width: 750px; }
-  .service-layout__right { padding-top: 0; }
+  .service-layout__right { max-width: 750px; }
 }
 @media (max-width: 720px) {
-  .brand-intro h2 { font-size: clamp(33px, 8vw, 48px); }
-  .service-layout__left h2 { font-size: clamp(29px, 6.5vw, 40px); }
+  .service-layout__headline h2 { font-size: clamp(29px, 6.5vw, 40px); }
+  .service-layout__left h3 { font-size: clamp(24px, 5.4vw, 32px); }
   .rules-preview-inner h2 { margin-bottom: 4px; }
   .rules-list__copy { grid-column: 2; }
   .rules-list__copy p { font-size: 15px; }

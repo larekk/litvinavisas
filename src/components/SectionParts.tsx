@@ -20,7 +20,6 @@ export function Steps({ title = "Как мы работаем" }: { title?: stri
   return (
     <section className="section">
       <div className="container">
-        <Eyebrow>КАК УСТРОЕНА РАБОТА</Eyebrow>
         <div className="section-heading"><h2>{title}</h2></div>
         <div className="step-grid">{steps.map((step) => (
           <article className="step" key={step.num}>
