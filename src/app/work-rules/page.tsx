@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import { ruleItems } from "@/lib/data";
-import { Eyebrow } from "@/components/SectionParts";
 
-export const metadata: Metadata = { title: "Наш подход" };
+export const metadata: Metadata = { title: "Принципы работы" };
 
 export default function WorkRulesPage() {
   return (
     <>
-      <section className="page-hero">
+      <section className="section work-rules-intro">
         <div className="container">
-          <Eyebrow>НАШ ПОДХОД</Eyebrow>
-          <h1>Несколько слов о работе с нами.</h1>
+          <p>Нам важно, чтобы сотрудничество было понятным и комфортным для всех. У нас есть несколько простых принципов, о которых мы предпочитаем говорить заранее.</p>
         </div>
       </section>
       <section className="section">

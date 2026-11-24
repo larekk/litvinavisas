@@ -493,3 +493,57 @@ html[data-theme="dark"] .home-hero p {
 .consultation-pricing__item span { margin-bottom: 12px; }
 .consultation-pricing__item strong { font-size: clamp(17px, 1.7vw, 22px); line-height: 1.5; font-weight: 500; }
 .consultation-pricing__note { font-weight: 500; font-size: 16px; line-height: 1.55; }
+
+/* Updated about, contacts and consultation layouts. */
+.home-about h1 {
+  margin: 12px 0 37px;
+  font-size: clamp(38px, 5vw, 67px);
+  font-weight: 550;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  color: #080c13;
+}
+.home-about__body .home-about__signature {
+  margin-top: 42px;
+  font-weight: 500;
+  letter-spacing: .02em;
+}
+.contacts-hero__copy h1 {
+  font-size: clamp(34px, 4.5vw, 62px);
+  line-height: 1.13;
+  overflow-wrap: break-word;
+}
+.contacts-hero__copy p:not(.eyebrow) {
+  margin: 0 0 14px;
+  max-width: 580px;
+  line-height: 1.7;
+}
+.contacts-hero__copy .contacts-hero__hours {
+  margin-top: 27px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: .06em;
+}
+.contacts-hero__email {
+  display: inline-block;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+}
+.contacts-hero__email:hover { color: var(--orange); }
+.work-rules-intro { background: var(--soft); }
+.work-rules-intro p {
+  max-width: 920px;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(18px, 1.9vw, 24px);
+  font-weight: 400;
+  line-height: 1.7;
+}
+.consultation-form-section { background: var(--paper); }
+.consultation-form-section .container { max-width: 760px; }
+@media (max-width: 720px) {
+  .home-about h1 { font-size: clamp(33px, 8vw, 47px); margin-bottom: 28px; }
+  .contacts-hero__copy h1 { font-size: clamp(32px, 8vw, 47px); }
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Eyebrow } from "@/components/SectionParts";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = { title: "Консультация" };
 
@@ -64,6 +65,11 @@ export default function ConsultationPage() {
         </div>
       </section>
 
+      <section className="section consultation-form-section">
+        <div className="container">
+          <ContactForm compact submitLabel="Записаться на консультацию" />
+        </div>
+      </section>
     </>
   );
 }
