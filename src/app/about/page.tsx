@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { CtaBand } from "@/components/SectionParts";
 
 export const metadata: Metadata = { title: "О VIZERA" };
 
@@ -17,7 +16,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-      <CtaBand title="Рады знакомству!" description="Расскажите нам о вашей поездке, и мы подскажем, с чего начать." />
     </>
   );
 }
