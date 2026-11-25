@@ -1,7 +1,8 @@
 # Фото проекта VIZERA — Unsplash
 
-Все 12 фотографий загружены из бесплатной коллекции Unsplash, хранятся в проекте локально в `public/images`. Внешние запросы к Unsplash при открытии сайта не нужны. Источники и авторские фотографии можно заменить в будущем. Лицензия: https://unsplash.com/license
+Все 13 фотографий загружены из бесплатной коллекции Unsplash, хранятся в проекте локально в `public/images`. Внешние запросы к Unsplash при открытии сайта не нужны. Источники и авторские фотографии можно заменить в будущем. Лицензия: https://unsplash.com/license
 
+- `visas-sheep.jpg` — фото овечки в горах, Danny Lines: https://unsplash.com/photos/k8nrdlLAb0s
 - `consultation-workspace.jpg` — подготовка поездки с картой, фото Element5 Digital: https://unsplash.com/photos/person-pointing-map-uE2T1tCFsn8
 - `contacts-workspace.jpg` — телефон и ноутбук на рабочем столе, фото Viva Reella: https://unsplash.com/photos/person-holding-phone-near-laptop-and-coffee-O3eGXAUeGGg
 - `hero-etretat.jpg` — предыдущий фон Этрета, Франция: https://unsplash.com/photos/m_uSWBJWr0s
