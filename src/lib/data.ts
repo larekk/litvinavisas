@@ -16,7 +16,7 @@ export type CountryPage = {
   name: string;
   title: string;
   intro: string;
-  tildaPageId: string;
+  tildaPageId?: string;
   region: string;
   types: { title: string; description: string }[];
 };
@@ -26,7 +26,7 @@ export const regions: Region[] = [
     slug: "europe", title: "Европа", tildaPageId: "83334676",
     description: "Мы поможем разобраться с визовыми требованиями и подачей документов для поездок по Европе.",
     countries: ["Италия", "Испания", "Германия", "Греция", "Польша", "Франция", "Болгария", "Венгрия", "Кипр"]
-      .map((name, i) => ({ name, id: `europe-${i}` })),
+      .map((name, i) => ({ name, id: `europe-${i}`, ...(name === "Франция" ? { slug: "france" } : {}) })),
   },
   {
     slug: "uk-ireland", title: "Великобритания и Ирландия", tildaPageId: "83368476",
@@ -68,6 +68,16 @@ export const regions: Region[] = [
 ];
 
 export const countries: CountryPage[] = [
+  {
+    slug: "france", name: "Франция", title: "Виза во Францию", region: "europe",
+    intro: "Поможем разобраться с подходящим типом визы и подготовкой документов с учётом гражданства, страны проживания и цели поездки.",
+    types: [
+      { title: "Туризм", description: "Краткосрочные поездки, отдых и путешествия." },
+      { title: "Гостевые визиты", description: "Поездки к родственникам, друзьям и близким." },
+      { title: "Деловые поездки", description: "Встречи, переговоры, конференции и другие деловые цели." },
+      { title: "Обучение", description: "Курсы и учебные программы. Условия оформления зависят от их продолжительности." },
+    ],
+  },
   {
     slug: "usa", name: "США", title: "Виза в США", region: "americas", tildaPageId: "98036086",
     intro: "Поможем подготовить документы, заполнить анкету и организовать подачу с учётом вашей ситуации.",
@@ -178,7 +188,7 @@ export const pageMap = [
   { title: "Главная", path: "/", id: "82666576" },
   { title: "Визы", path: "/visas", id: "83090656" },
   ...regions.map((region) => ({ title: region.title, path: `/visas/${region.slug}`, id: region.tildaPageId })),
-  ...countries.map((country) => ({ title: country.title, path: `/visas/${country.slug}`, id: country.tildaPageId })),
+  ...countries.filter((country) => country.tildaPageId).map((country) => ({ title: country.title, path: `/visas/${country.slug}`, id: country.tildaPageId! })),
   { title: "Консультация", path: "/consultation", id: "83102666" },
   { title: "Контакты", path: "/contacts", id: "82933076" },
   { title: "Политика конфиденциальности", path: "/legal/privacy", id: "83329416" },

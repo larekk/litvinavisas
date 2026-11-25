@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { countries, regions } from "@/lib/data";
 import { CtaBand, Eyebrow, Steps } from "@/components/SectionParts";
 
+const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
@@ -35,6 +37,93 @@ export default async function DirectionPage({ params }: Props) {
   const country = countries.find((item) => item.slug === slug);
   if (!country) notFound();
   const parent = regions.find((item) => item.slug === country.region);
+
+  if (country.slug === "france") return (
+    <>
+      <section className="section france-visa-hero" aria-labelledby="france-visa-title">
+        <div className="container france-visa-hero__layout">
+          <div className="france-visa-hero__copy">
+            <div className="breadcrumbs">
+              <Link href="/visas">Все направления</Link>
+              <span> / </span>
+              <Link href="/visas#europe">Европа</Link>
+              <span> / </span>
+              <span>Франция</span>
+            </div>
+            <Eyebrow>ВИЗОВОЕ НАПРАВЛЕНИЕ</Eyebrow>
+            <h1 id="france-visa-title">{country.title}</h1>
+            <p>{country.intro}</p>
+            <Link className="button button-dark" href="/contacts#contact-form">Оставить заявку ↗</Link>
+          </div>
+          <div
+            className="france-visa-hero__image"
+            role="img"
+            aria-label="Париж, Франция"
+            style={{ backgroundImage: `url("${assetBasePath}/images/destinations/europe.jpg")` }}
+          />
+        </div>
+      </section>
+
+      <section className="section france-visa-types" aria-labelledby="france-visa-types-title">
+        <div className="container">
+          <Eyebrow>ВАРИАНТЫ ОФОРМЛЕНИЯ</Eyebrow>
+          <h2 id="france-visa-types-title">Для каких поездок</h2>
+          <div className="france-visa-types__grid">
+            {country.types.map((type, index) => (
+              <article key={type.title} className="france-visa-type">
+                <span className="france-visa-type__number">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{type.title}</h3>
+                <p>{type.description}</p>
+              </article>
+            ))}
+          </div>
+          <p className="france-visa-types__note">Подходящая категория зависит от вашей ситуации. Перечень направлений носит ознакомительный характер.</p>
+        </div>
+      </section>
+
+      <section className="section france-visa-documents" aria-labelledby="france-documents-title">
+        <div className="container france-visa-documents__layout">
+          <div className="france-visa-documents__intro">
+            <Eyebrow>ПОДГОТОВКА К ПОДАЧЕ</Eyebrow>
+            <h2 id="france-documents-title">Документы<br />и опросный лист</h2>
+            <p>Ниже — ориентировочный список документов. Раскройте его, чтобы посмотреть, с чего можно начать подготовку.</p>
+          </div>
+          <div className="france-visa-documents__actions">
+            <details className="france-visa-documents__disclosure">
+              <summary>
+                <span>Список документов</span>
+                <span className="france-visa-documents__plus" aria-hidden="true">+</span>
+              </summary>
+              <div className="france-visa-documents__content">
+                <ol>
+                  <li>Паспорт(а)</li>
+                  <li>Две фотографии</li>
+                  <li>Подтверждение занятости (справка с работы, ИП, самозанятость, учёба, пенсионер и прочее)</li>
+                  <li>Выписка из банка</li>
+                  <li>Социально-экономические связи со страной, при наличии (недвижимость, семья)</li>
+                </ol>
+                <p className="france-visa-documents__disclaimer">Список документов может частично изменяться или дополняться в зависимости от ваших условий (гражданства и др.), а также от типа визы, которую вы хотели бы получить.</p>
+              </div>
+            </details>
+            <button
+              className="france-visa-documents__download"
+              type="button"
+              disabled
+              title="Опросный лист будет добавлен позже"
+            >
+              <span>Скачать опросный лист</span>
+              <span aria-hidden="true">↓</span>
+            </button>
+            <p className="france-visa-documents__coming-soon">Файл опросного листа добавим позже.</p>
+          </div>
+        </div>
+      </section>
+
+      <Steps title="Как проходит работа" />
+      <CtaBand title="Обсудим вашу поездку во Францию" hideEyebrow />
+    </>
+  );
+
   return <>
     <section className="page-hero"><div className="container"><div className="breadcrumbs"><Link href="/visas">Визы</Link><span> / </span><Link href={`/visas/${country.region}`}>{parent?.title}</Link><span> / </span><span>{country.name}</span></div><Eyebrow>ВИЗОВОЕ НАПРАВЛЕНИЕ</Eyebrow><h1>{country.title}</h1><p>{country.intro}</p><Link className="button button-dark" href="/contacts#contact-form">Оставить заявку ↗</Link></div></section>
     <section className="section"><div className="container"><div className="section-heading"><h2>Варианты оформления</h2><p>Перечень ориентировочный. Подходящая категория зависит от гражданства, цели поездки и актуальных требований.</p></div><div className="info-grid">{country.types.map((item, index) => <article className="info-card" key={item.title}><span className="card-index">0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>
