@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { countries, regions } from "@/lib/data";
 import { CtaBand, Eyebrow, Steps } from "@/components/SectionParts";
+import VisaPriceList from "@/components/VisaPriceList";
 
 const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -53,11 +54,7 @@ export default async function DirectionPage({ params }: Props) {
             <Eyebrow>ВИЗОВОЕ НАПРАВЛЕНИЕ</Eyebrow>
             <h1 id="france-visa-title">{country.title}</h1>
             <p>{country.intro}</p>
-            <div className="europe-visa-price" aria-label="Стоимость сопровождения">
-              <span>СТОИМОСТЬ СОПРОВОЖДЕНИЯ</span>
-              <strong>{country.priceRUB == null ? "— руб." : `${country.priceRUB.toLocaleString("ru-RU")} руб.`} / {country.priceBYN == null ? "— бел. руб." : `${country.priceBYN.toLocaleString("ru-RU")} бел. руб.`}</strong>
-              <small>Тариф уточняется. Окончательную стоимость согласуем перед началом работы.</small>
-            </div>
+            <VisaPriceList slug={country.slug} compact />
             <Link className="button button-dark" href="/contacts#contact-form">Оставить заявку ↗</Link>
           </div>
           {country.slug === "france" ? (
@@ -136,7 +133,7 @@ export default async function DirectionPage({ params }: Props) {
   );
 
   return <>
-    <section className="page-hero"><div className="container"><div className="breadcrumbs"><Link href="/visas">Визы</Link><span> / </span><Link href={`/visas#${country.region}`}>{parent?.title}</Link><span> / </span><span>{country.name}</span></div><Eyebrow>ВИЗОВОЕ НАПРАВЛЕНИЕ</Eyebrow><h1>{country.title}</h1><p>{country.intro}</p><Link className="button button-dark" href="/contacts#contact-form">Оставить заявку ↗</Link></div></section>
+    <section className="page-hero"><div className="container"><div className="breadcrumbs"><Link href="/visas">Визы</Link><span> / </span><Link href={`/visas#${country.region}`}>{parent?.title}</Link><span> / </span><span>{country.name}</span></div><Eyebrow>ВИЗОВОЕ НАПРАВЛЕНИЕ</Eyebrow><h1>{country.title}</h1><p>{country.intro}</p><VisaPriceList slug={country.slug} /><Link className="button button-dark" href="/contacts#contact-form">Оставить заявку ↗</Link></div></section>
     <section className="section"><div className="container"><div className="section-heading"><h2>Варианты оформления</h2><p>Перечень ориентировочный. Подходящая категория зависит от гражданства, цели поездки и актуальных требований.</p></div><div className="info-grid">{country.types.map((item, index) => <article className="info-card" key={item.title}><span className="card-index">0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>
     <section className="section soft-section"><div className="container two-col"><div><Eyebrow>КАК МЫ МОЖЕМ ПОМОЧЬ</Eyebrow><h2>Сопровождение<br />под вашу задачу.</h2></div><div className="body-copy"><p><strong>Полное сопровождение.</strong> Разбираем ситуацию, помогаем подготовить анкеты и комплект документов и объясняем порядок действий.</p><p><strong>Отдельные услуги.</strong> Можно обратиться за консультацией, заполнением или проверкой анкеты, подготовкой к подаче.</p><p className="fineprint">Визовые требования меняются. Перед подачей проверяйте действующие условия в официальных источниках.</p></div></div></section>
     <Steps title="Как проходит работа" />

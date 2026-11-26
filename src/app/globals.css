@@ -829,3 +829,67 @@ a.europe-questionnaire-link:hover { border-color:var(--orange); background:var(-
   .schengen-questionnaire__print strong { font-weight:700; color:#111!important; }
   .schengen-questionnaire__print span { color:#111!important; white-space:pre-wrap; }
 }
+
+/* Visa service rates from the supplied RUB price list. BYN requires separate approval. */
+.visa-price-list {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(20px, 2.2vw, 29px) 0;
+  margin: 14px 0 29px;
+  max-width: 720px;
+  color: var(--ink);
+}
+.visa-price-list__eyebrow {
+  display:block;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  margin: 0 0 19px;
+}
+.visa-price-list__rows { margin: 0; }
+.visa-price-list__row {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: 12px 20px;
+  border-top: 1px solid var(--line);
+  padding: 14px 0;
+  align-items: start;
+}
+.visa-price-list__row dt {
+  color: var(--ink);
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.5;
+}
+.visa-price-list__row dd { margin: 0; line-height: 1.5; text-align: right; }
+.visa-price-list__row dd strong {
+  display: inline;
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 600;
+  color: var(--ink);
+}
+.visa-price-list__row dd > span {
+  color: var(--muted);
+  font-size: clamp(13px, 1.1vw, 16px);
+  white-space: normal;
+}
+.visa-price-list__row dd small {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 5px 0 0;
+  line-height: 1.5;
+}
+.visa-price-list__disclaimer {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 10px 0 0;
+}
+.europe-visa-price.visa-price-list { margin-top: 10px; }
+.visas-index-country__price { white-space: nowrap; color: var(--muted); }
+@media (max-width: 600px) {
+  .visa-price-list__row { grid-template-columns: 1fr; gap: 4px; }
+  .visa-price-list__row dd { text-align: left; }
+  .visas-index-country > span:last-child { white-space: normal; text-align: right; }
+}

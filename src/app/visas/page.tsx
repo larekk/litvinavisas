@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { regions } from "@/lib/data";
+import { lowestRub, formatRub } from "@/lib/visaPrices";
 import { CtaBand } from "@/components/SectionParts";
 
 const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -39,6 +40,7 @@ export default function VisasPage() {
               <div className="country-grid visas-index-region__countries">
                 {region.countries.map((destination) => {
                   const hasPage = Boolean(destination.slug);
+                  const minPrice = lowestRub(destination.slug ?? destination.id);
                   return (
                     <Link
                       id={destination.id}
@@ -48,7 +50,7 @@ export default function VisasPage() {
                       aria-label={`${destination.name} — ${hasPage ? "открыть страницу направления" : "оставить заявку"}`}
                     >
                       <span>{destination.name}</span>
-                      <span>{hasPage ? "Подробнее ↗" : "Оставить заявку ↗"}</span>
+                      <span>{minPrice != null && <span className="visas-index-country__price">от {formatRub(minPrice)} · </span>}{hasPage ? "Подробнее ↗" : "Оставить заявку ↗"}</span>
                     </Link>
                   );
                 })}
