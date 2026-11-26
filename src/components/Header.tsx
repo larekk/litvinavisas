@@ -19,6 +19,7 @@ export default function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const menuRef = useRef<HTMLDivElement>(null);
+  const mobileNavRef = useRef<HTMLElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,8 +33,13 @@ export default function Header() {
       if (event.key === "Escape") { setMobileOpen(false); setVisasOpen(false); setSearchOpen(false); }
     };
     const onPointer = (event: PointerEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) setVisasOpen(false);
-      if (searchRef.current && !searchRef.current.contains(event.target as Node)) setSearchOpen(false);
+      const target = event.target as Node;
+      // The desktop menu is hidden on phones. Taps inside the mobile dropdown
+      // must not close it on pointerdown before its links receive the click.
+      const insideDesktopMenu = menuRef.current?.contains(target) ?? false;
+      const insideMobileMenu = mobileNavRef.current?.contains(target) ?? false;
+      if (!insideDesktopMenu && !insideMobileMenu) setVisasOpen(false);
+      if (searchRef.current && !searchRef.current.contains(target)) setSearchOpen(false);
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("pointerdown", onPointer);
@@ -81,7 +87,7 @@ export default function Header() {
           <button type="button" className={styles.mobileToggle} aria-expanded={mobileOpen} aria-controls="mobile-navigation" aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"} onClick={() => setMobileOpen(!mobileOpen)}><span /><span /><span /></button>
         </div>
       </div>
-      {mobileOpen && <nav className={styles.mobileNav} id="mobile-navigation" aria-label="Мобильная навигация">
+      {mobileOpen && <nav ref={mobileNavRef} className={styles.mobileNav} id="mobile-navigation" aria-label="Мобильная навигация">
         <Link onClick={closeAll} href="/">Главная</Link><Link onClick={closeAll} href="/visas">Все визы</Link>
         <button className={styles.mobileSubToggle} type="button" onClick={() => setVisasOpen(!visasOpen)} aria-expanded={visasOpen} aria-controls="mobile-regions">География Виз <span>{visasOpen ? "−" : "+"}</span></button>
         {visasOpen && <div className={styles.mobileSub} id="mobile-regions">{regions.map((region) => <Link key={region.slug} href={`/visas#${region.slug}`} onClick={closeAll}>{region.title}</Link>)}{countries.map((country) => <Link key={country.slug} href={`/visas/${country.slug}`} onClick={closeAll}>{country.name}</Link>)}</div>}
