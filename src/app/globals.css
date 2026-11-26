@@ -738,3 +738,54 @@ html[data-theme="dark"] .home-hero p {
   .france-visa-documents__content { animation: none; }
   .france-visa-documents__plus { transition: none; }
 }
+
+
+/* European visa pages: tariff placeholders until client rates can be verified. */
+.europe-visa-price { padding: 18px 0; margin: -4px 0 27px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.europe-visa-price span { display:block; font-size:11px; font-weight:650; letter-spacing:.12em; color:var(--orange); margin:0 0 12px; }
+.europe-visa-price strong { display:block; font-size:clamp(20px,2.1vw,28px); font-weight:550; color:var(--ink); margin-bottom:8px; }
+.europe-visa-price small { color:var(--muted); line-height:1.55; }
+.europe-visa-hero__art { min-width:0; aspect-ratio:4/4.4; padding:clamp(23px,3vw,44px); border:1px solid var(--line); border-radius:5px; background:var(--paper); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; }
+.europe-visa-hero__art span { color:var(--orange); font-size:clamp(11px,1.15vw,15px); font-weight:600; letter-spacing:.15em; }
+.europe-visa-hero__art strong { overflow-wrap:anywhere; color:var(--ink); font-size:clamp(39px,5vw,82px); line-height:1.08; letter-spacing:-.04em; font-weight:500; }
+.europe-visa-cyprus-note { margin:25px 0 0; padding:20px; border-left:3px solid var(--orange); background:var(--soft); color:var(--muted); font-size:15px; line-height:1.65; }
+a.europe-questionnaire-link { cursor:pointer; color:var(--ink); text-decoration:none; }
+a.europe-questionnaire-link:hover { border-color:var(--orange); background:var(--paper); color:var(--orange); }
+@media (max-width:760px) { .europe-visa-hero__art { aspect-ratio:16/10; } }
+@media (max-width:460px) { .europe-visa-hero__art { aspect-ratio:4/3; } }
+
+/* Client-side questionnaire: no upload endpoint, printable for private use. */
+.schengen-questionnaire-hero { background:var(--soft); }
+.schengen-questionnaire-hero h1 { font-size:clamp(38px,5vw,70px); line-height:1.12; margin:18px 0 30px; }
+.schengen-questionnaire-hero p:not(.eyebrow) { max-width:790px; font-size:clamp(16px,1.5vw,19px); line-height:1.7; color:var(--muted); }
+.schengen-questionnaire__actions { display:flex; gap:28px; justify-content:space-between; align-items:center; border-bottom:1px solid var(--line); padding-bottom:40px; }
+.schengen-questionnaire__actions p { max-width:700px; color:var(--muted); font-size:15px; line-height:1.65; margin:0; }
+.schengen-questionnaire__actions .button { white-space:nowrap; }
+.schengen-questionnaire__group { padding:clamp(34px,4.2vw,58px) 0; border-bottom:1px solid var(--line); }
+.schengen-questionnaire__group h2 { font-size:clamp(25px,2.9vw,39px); margin:0 0 20px; line-height:1.25; }
+.schengen-questionnaire__group-help { font-size:15px; color:var(--muted); line-height:1.65; margin:0 0 28px; }
+.schengen-questionnaire__fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:26px 36px; }
+.schengen-questionnaire__field { display:flex; flex-direction:column; min-width:0; gap:9px; }
+.schengen-questionnaire__field--wide { grid-column:1/-1; }
+.schengen-questionnaire__field label { font-size:14px; line-height:1.45; color:var(--ink); font-weight:500; }
+.schengen-questionnaire__field input, .schengen-questionnaire__field select, .schengen-questionnaire__field textarea { appearance:auto; width:100%; min-width:0; background:var(--paper); color:var(--ink); border:1px solid var(--line); padding:14px 15px; border-radius:5px; font:inherit; font-size:15px; outline:none; }
+.schengen-questionnaire__field textarea { resize:vertical; }
+.schengen-questionnaire__field input:focus, .schengen-questionnaire__field select:focus, .schengen-questionnaire__field textarea:focus { border-color:var(--orange); outline:2px solid color-mix(in srgb,var(--orange) 25%,transparent); }
+.schengen-questionnaire__finish { padding:42px 0 0; }
+.schengen-questionnaire__finish p { font-size:14px; color:var(--muted); line-height:1.65; max-width:1000px; }
+.schengen-questionnaire__finish .button { margin-top:25px; }
+@media(max-width:720px) { .schengen-questionnaire__actions { flex-direction:column; align-items:start; } .schengen-questionnaire__fields { grid-template-columns:1fr; gap:23px; } .schengen-questionnaire__field--wide { grid-column:auto; } .schengen-questionnaire__actions .button { white-space:normal; } }
+@media print {
+  body:has(.schengen-questionnaire) > header,
+  body:has(.schengen-questionnaire) > footer,
+  .schengen-questionnaire-hero,
+  .schengen-questionnaire__actions,
+  .schengen-questionnaire__finish .button { display:none!important; }
+  body:has(.schengen-questionnaire) { color:#000!important; background:white!important; }
+  .schengen-questionnaire-section { padding:0!important; background:white!important; }
+  .schengen-questionnaire__group { break-inside:avoid-page; padding:14pt 0; border-color:#ddd; }
+  .schengen-questionnaire__fields { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9pt; }
+  .schengen-questionnaire__field label, .schengen-questionnaire__group h2 { color:#111!important; }
+  .schengen-questionnaire__field input, .schengen-questionnaire__field select, .schengen-questionnaire__field textarea { color:#111!important; border:1px solid #bbb!important; background:white!important; padding:6pt!important; min-height:24pt; }
+  .schengen-questionnaire__finish p { color:#333!important; }
+}

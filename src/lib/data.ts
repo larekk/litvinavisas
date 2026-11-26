@@ -18,7 +18,15 @@ export type CountryPage = {
   intro: string;
   tildaPageId?: string;
   region: string;
+  priceRUB?: number;
+  priceBYN?: number;
   types: { title: string; description: string }[];
+};
+
+const europeSlugs: Record<string, string> = {
+  "Италия": "italy", "Испания": "spain", "Германия": "germany",
+  "Греция": "greece", "Польша": "poland", "Франция": "france",
+  "Болгария": "bulgaria", "Венгрия": "hungary", "Кипр": "cyprus",
 };
 
 export const regions: Region[] = [
@@ -26,7 +34,7 @@ export const regions: Region[] = [
     slug: "europe", title: "Европа", tildaPageId: "83334676",
     description: "Мы поможем разобраться с визовыми требованиями и подачей документов для поездок по Европе.",
     countries: ["Италия", "Испания", "Германия", "Греция", "Польша", "Франция", "Болгария", "Венгрия", "Кипр"]
-      .map((name, i) => ({ name, id: `europe-${i}`, ...(name === "Франция" ? { slug: "france" } : {}) })),
+      .map((name, i) => ({ name, id: `europe-${i}`, slug: europeSlugs[name] })),
   },
   {
     slug: "uk-ireland", title: "Великобритания и Ирландия", tildaPageId: "83368476",
@@ -47,8 +55,8 @@ export const regions: Region[] = [
     description: "Визы, электронные разрешения и документы для поездок по Азии.",
     countries: [
       { name: "Япония", slug: "japan", id: "japan" },
-      ...["Китай", "Таиланд", "Тайвань", "Сингапур", "Южная Корея", "Индия", "Филиппины"]
-        .map((name, i) => ({ name, id: ["china", "thailand", "taiwan", "singapore", "korea", "india", "philippines"][i] })),
+      ...["Китай", "Таиланд", "Тайвань", "Сингапур", "Южная Корея", "Индия", "Филиппины", "Вьетнам"]
+        .map((name, i) => ({ name, id: ["china", "thailand", "taiwan", "singapore", "korea", "india", "philippines", "vietnam"][i] })),
     ],
   },
   {
@@ -67,6 +75,45 @@ export const regions: Region[] = [
   },
 ];
 
+const europeanShortStayTypes = [
+  { title: "Туризм", description: "Краткосрочные поездки, отдых и путешествия." },
+  { title: "Гостевые визиты", description: "Поездки к друзьям, родственникам и близким." },
+  { title: "Деловые поездки", description: "Встречи, переговоры, конференции и другие деловые цели." },
+  { title: "Обучение", description: "Учёба и курсы. Тип визы зависит от продолжительности программы." },
+];
+
+const otherEuropeanCountries: CountryPage[] = [
+  { slug: "italy", name: "Италия", title: "Виза в Италию", region: "europe",
+    intro: "Поможем определить подходящий тип визы в Италию и подготовить документы с учётом цели поездки, гражданства и места проживания.",
+    types: europeanShortStayTypes },
+  { slug: "spain", name: "Испания", title: "Виза в Испанию", region: "europe",
+    intro: "Разберём вашу ситуацию и порядок оформления визы в Испанию: от списка документов до подготовки к подаче.",
+    types: europeanShortStayTypes },
+  { slug: "germany", name: "Германия", title: "Виза в Германию", region: "europe",
+    intro: "Поможем разобраться с требованиями и подготовкой документов для поездки в Германию с учётом ваших условий.",
+    types: europeanShortStayTypes },
+  { slug: "greece", name: "Греция", title: "Виза в Грецию", region: "europe",
+    intro: "Помогаем готовиться к поездке в Грецию и разбираться с визовыми требованиями, документами и подачей.",
+    types: europeanShortStayTypes },
+  { slug: "poland", name: "Польша", title: "Виза в Польшу", region: "europe",
+    intro: "Подберём подходящий порядок оформления визы в Польшу, исходя из гражданства, страны проживания и цели поездки.",
+    types: europeanShortStayTypes },
+  { slug: "bulgaria", name: "Болгария", title: "Виза в Болгарию", region: "europe",
+    intro: "Поможем разобраться с условиями оформления визы в Болгарию и подготовкой документов к поездке.",
+    types: europeanShortStayTypes },
+  { slug: "hungary", name: "Венгрия", title: "Виза в Венгрию", region: "europe",
+    intro: "Объясним варианты поездок, порядок подачи и подготовим документы с учётом ваших обстоятельств.",
+    types: europeanShortStayTypes },
+  { slug: "cyprus", name: "Кипр", title: "Виза на Кипр", region: "europe",
+    intro: "Проверим, нужна ли вам национальная кипрская виза, и поможем разобраться с документами и условиями въезда.",
+    types: [
+      { title: "Туризм", description: "Краткосрочные поездки и отдых на Кипре." },
+      { title: "Гостевые визиты", description: "Поездки к семье, друзьям и близким." },
+      { title: "Деловые поездки", description: "Краткосрочные деловые встречи и мероприятия." },
+      { title: "Учёба", description: "Для обучения могут потребоваться отдельные документы и разрешения." },
+    ] },
+];
+
 export const countries: CountryPage[] = [
   {
     slug: "france", name: "Франция", title: "Виза во Францию", region: "europe",
@@ -78,6 +125,7 @@ export const countries: CountryPage[] = [
       { title: "Обучение", description: "Курсы и учебные программы. Условия оформления зависят от их продолжительности." },
     ],
   },
+  ...otherEuropeanCountries,
   {
     slug: "usa", name: "США", title: "Виза в США", region: "americas", tildaPageId: "98036086",
     intro: "Поможем подготовить документы, заполнить анкету и организовать подачу с учётом вашей ситуации.",

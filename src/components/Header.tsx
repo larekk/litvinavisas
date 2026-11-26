@@ -44,6 +44,9 @@ export default function Header() {
   const searchResults = [
     ...regions.map((region) => ({ name: region.title, href: `/visas#${region.slug}`, type: "География" })),
     ...countries.map((country) => ({ name: country.name, href: `/visas/${country.slug}`, type: "Страна" })),
+    ...regions.flatMap((region) => region.countries
+      .filter((destination) => !destination.slug)
+      .map((destination) => ({ name: destination.name, href: `/visas#${destination.id}`, type: "Направление" }))),
   ].filter((item) => item.name.toLowerCase().includes(query.trim().toLowerCase()));
 
   return (

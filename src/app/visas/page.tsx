@@ -23,7 +23,7 @@ export default function VisasPage() {
               height={2048}
               alt="Овечка посреди туманного горного пейзажа"
             />
-            <figcaption className="visas-index-hero__thought">Where the fuck i am</figcaption>
+            <figcaption className="visas-index-hero__thought">Where the fuck am I</figcaption>
           </figure>
         </div>
       </section>
