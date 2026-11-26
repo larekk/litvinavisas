@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 type Question = {
   label: string;
@@ -93,44 +94,166 @@ const groups: QuestionGroup[] = [
   },
 ];
 
+
+const questionGroups = groups.map((group, groupIndex) => ({
+  ...group,
+  questions: group.questions.map((question, questionIndex) => ({
+    ...question,
+    id: `visa-question-${groupIndex + 1}-${questionIndex + 1}`,
+  })),
+}));
+
 export default function EuropeQuestionnaire() {
-  let index = 0;
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [feedback, setFeedback] = useState("");
+  const [exporting, setExporting] = useState(false);
+  const updateAnswer = (id: string, value: string) => {
+    setAnswers((previous) => ({ ...previous, [id]: value }));
+    if (feedback) setFeedback("");
+  };
+
+  function plainText() {
+    return [
+      "VIZERA — ОПРОСНЫЙ ЛИСТ ДЛЯ ЕВРОПЕЙСКОЙ ВИЗЫ",
+      "Дата: " + new Date().toLocaleDateString("ru-RU"),
+      "",
+      ...questionGroups.flatMap((group) => [
+        group.title,
+        ...group.questions.map((question) => `${question.label}: ${answers[question.id]?.trim() || "—"}`),
+        "",
+      ]),
+      "Предварительный опросник, не официальная визовая анкета.",
+    ].join("\n");
+  }
+
+  async function copyAll() {
+    try {
+      await navigator.clipboard.writeText(plainText());
+      setFeedback("Ответы скопированы. Их можно вставить в Word, письмо или другой документ.");
+    } catch {
+      setFeedback("Не удалось скопировать автоматически. Используйте экспорт в Word или PDF.");
+    }
+  }
+
+  async function downloadDocx() {
+    if (exporting) return;
+    setExporting(true);
+    setFeedback("");
+    try {
+      // Word is generated locally in the browser, without sending the answers.
+      const { Document, HeadingLevel, Packer, Paragraph, TextRun } = await import("docx");
+      const content = [
+        new Paragraph({ text: "ОПРОСНЫЙ ЛИСТ VIZERA", heading: HeadingLevel.TITLE }),
+        new Paragraph({ text: "Европейские визы — предварительные данные", spacing: { after: 160 } }),
+        new Paragraph({ text: `Дата: ${new Date().toLocaleDateString("ru-RU")}`, spacing: { after: 260 } }),
+        ...questionGroups.flatMap((group) => [
+          new Paragraph({ text: group.title, heading: HeadingLevel.HEADING_1, spacing: { before: 260, after: 140 } }),
+          ...group.questions.map((question) => new Paragraph({
+            children: [
+              new TextRun({ text: question.label + ": ", bold: true }),
+              new TextRun({ text: answers[question.id]?.trim() || "—" }),
+            ],
+            spacing: { after: 150 },
+          })),
+        ]),
+        new Paragraph({ text: "Это предварительный опросник, а не официальная визовая анкета.", spacing: { before: 240 } }),
+      ];
+      const wordDoc = new Document({
+        creator: "VIZERA",
+        title: "Опросный лист — европейские визы",
+        sections: [{ properties: {}, children: content }],
+      });
+      const blob = await Packer.toBlob(wordDoc);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "vizera-europe-questionnaire.docx";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 30000);
+      setFeedback("Файл Word сформирован. Текст в нём можно выделять, копировать и редактировать.");
+    } catch {
+      setFeedback("Не удалось создать файл Word. Можно скопировать ответы или сохранить PDF.");
+    } finally {
+      setExporting(false);
+    }
+  }
+
+  function printPdf() {
+    setFeedback("В окне печати выберите «Сохранить как PDF». Ответы будут обычным выделяемым текстом.");
+    window.print();
+  }
+
   return (
     <div className="schengen-questionnaire">
       <div className="schengen-questionnaire__actions">
-        <p>Опросник заполняется прямо на странице. Информация не отправляется на сайт или в консульство. Чтобы сохранить ответы, используйте печать в PDF.</p>
-        <button type="button" className="button button-dark" onClick={() => window.print()}>Сохранить в PDF / распечатать ↗</button>
+        <p>Заполняйте поля прямо на странице. Ответы не отправляются на сервер и не сохраняются после закрытия страницы. Выберите удобный формат экспорта:</p>
+        <div className="schengen-questionnaire__buttons">
+          <button type="button" className="button button-dark" onClick={downloadDocx} disabled={exporting}>
+            {exporting ? "Создаём Word…" : "Скачать заполненный Word (.docx) ↓"}
+          </button>
+          <button type="button" className="schengen-questionnaire__button-secondary" onClick={printPdf}>Сохранить PDF с текстом ↗</button>
+          <button type="button" className="schengen-questionnaire__button-secondary" onClick={copyAll}>Скопировать все ответы</button>
+        </div>
       </div>
-      {groups.map((group) => (
+      {feedback && <p className="schengen-questionnaire__feedback" role="status">{feedback}</p>}
+
+      {questionGroups.map((group) => (
         <section key={group.title} className="schengen-questionnaire__group">
           <h2>{group.title}</h2>
           {group.description && <p className="schengen-questionnaire__group-help">{group.description}</p>}
           <div className="schengen-questionnaire__fields">
-            {group.questions.map((question) => {
-              const id = `visa-question-${++index}`;
-              return (
-                <div key={id} className={`schengen-questionnaire__field ${question.wide ? "schengen-questionnaire__field--wide" : ""}`}>
-                  <label htmlFor={id}>{question.label}</label>
-                  {question.type === "select" ? (
-                    <select id={id} name={id} defaultValue="">
-                      <option value="">Выберите вариант</option>
-                      {question.options?.map((value) => <option key={value} value={value}>{value}</option>)}
-                    </select>
-                  ) : question.type === "textarea" ? (
-                    <textarea id={id} name={id} rows={3} />
-                  ) : (
-                    <input id={id} name={id} type={question.type ?? "text"} />
-                  )}
-                </div>
-              );
-            })}
+            {group.questions.map((question) => (
+              <div key={question.id} className={`schengen-questionnaire__field ${question.wide ? "schengen-questionnaire__field--wide" : ""}`}>
+                <label htmlFor={question.id}>{question.label}</label>
+                {question.type === "select" ? (
+                  <select id={question.id} name={question.id}
+                    value={answers[question.id] ?? ""}
+                    onChange={(event) => updateAnswer(question.id, event.target.value)}>
+                    <option value="">Выберите вариант</option>
+                    {question.options?.map((value) => <option key={value} value={value}>{value}</option>)}
+                  </select>
+                ) : question.type === "textarea" ? (
+                  <textarea id={question.id} name={question.id} rows={3}
+                    value={answers[question.id] ?? ""}
+                    onChange={(event) => updateAnswer(question.id, event.target.value)}
+                  />
+                ) : (
+                  <input id={question.id} name={question.id} type={question.type ?? "text"}
+                    value={answers[question.id] ?? ""}
+                    onChange={(event) => updateAnswer(question.id, event.target.value)}
+                  />
+                )}
+              </div>
+            ))}
           </div>
         </section>
       ))}
       <div className="schengen-questionnaire__finish">
         <p>Это внутренний опросник VIZERA для подготовки к консультации и заполнению документов. Он не заменяет официальную визовую анкету. Требования различаются по стране, гражданству и месту подачи.</p>
         <p>Кипр оформляет национальные визы, а не шенгенские. Для него список вопросов служит только первоначальным сбором информации.</p>
-        <button type="button" className="button button-dark" onClick={() => window.print()}>Сохранить ответы в PDF ↗</button>
+        <div className="schengen-questionnaire__buttons">
+          <button type="button" className="button button-dark" onClick={downloadDocx} disabled={exporting}>Скачать Word (.docx) ↓</button>
+          <button type="button" className="schengen-questionnaire__button-secondary" onClick={printPdf}>Сохранить PDF с текстом ↗</button>
+        </div>
+      </div>
+
+      <div className="schengen-questionnaire__print" aria-hidden="true">
+        <h1>VIZERA — Опросный лист для европейской визы</h1>
+        <p>Дата: {new Date().toLocaleDateString("ru-RU")}</p>
+        {questionGroups.map((group) => (
+          <section key={group.title}>
+            <h2>{group.title}</h2>
+            {group.questions.map((question) => (
+              <p key={question.id}>
+                <strong>{question.label}:</strong>{" "}
+                <span>{answers[question.id]?.trim() || "—"}</span>
+              </p>
+            ))}
+          </section>
+        ))}
+        <p>Предварительный опросник VIZERA — не официальная визовая анкета.</p>
       </div>
     </div>
   );

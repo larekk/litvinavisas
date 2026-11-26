@@ -789,3 +789,43 @@ a.europe-questionnaire-link:hover { border-color:var(--orange); background:var(-
   .schengen-questionnaire__field input, .schengen-questionnaire__field select, .schengen-questionnaire__field textarea { color:#111!important; border:1px solid #bbb!important; background:white!important; padding:6pt!important; min-height:24pt; }
   .schengen-questionnaire__finish p { color:#333!important; }
 }
+
+/* Editable Word and copyable-text PDF export for the European visa questionnaire. */
+.schengen-questionnaire__buttons { display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:flex-start; }
+.schengen-questionnaire__actions { align-items:flex-start; flex-direction:column; gap:20px; }
+.schengen-questionnaire__actions .button { white-space:normal; }
+.schengen-questionnaire__button-secondary {
+  display:inline-flex; align-items:center; justify-content:center;
+  text-align:center; font:inherit; font-size:14px; font-weight:550; line-height:1.35;
+  padding:13px 18px; border:1px solid var(--line); color:var(--ink);
+  background:var(--soft); border-radius:4px; cursor:pointer;
+}
+.schengen-questionnaire__button-secondary:hover { color:var(--orange); border-color:var(--orange); }
+.schengen-questionnaire__button-secondary:focus-visible { outline:2px solid var(--orange); outline-offset:3px; }
+.schengen-questionnaire__feedback { color:var(--muted); font-size:14px; margin:15px 0 0; line-height:1.5; }
+.schengen-questionnaire__finish .schengen-questionnaire__buttons { margin-top:25px; }
+.schengen-questionnaire__finish .schengen-questionnaire__buttons .button { margin:0; }
+.schengen-questionnaire__print { display:none; }
+@media (max-width:560px) {
+  .schengen-questionnaire__buttons { align-items:stretch; flex-direction:column; width:100%; }
+  .schengen-questionnaire__buttons > button { width:100%; white-space:normal; }
+}
+@media print {
+  @page { size:A4; margin:17mm 17mm 18mm; }
+  body:has(.schengen-questionnaire) > header, body:has(.schengen-questionnaire) > footer,
+  .schengen-questionnaire-hero, .schengen-questionnaire__actions,
+  .schengen-questionnaire__feedback, .schengen-questionnaire__group,
+  .schengen-questionnaire__finish { display:none!important; }
+  .schengen-questionnaire-section, .schengen-questionnaire, .schengen-questionnaire-section .container {
+    display:block!important; padding:0!important; margin:0!important;
+    color:#111!important; background:white!important;
+    max-width:none!important; width:100%!important;
+  }
+  .schengen-questionnaire__print { display:block!important; font-size:10pt; font-family:Arial,sans-serif; color:#111!important; }
+  .schengen-questionnaire__print h1 { font-size:17pt; margin:0 0 12pt; color:#111!important; }
+  .schengen-questionnaire__print h2 { font-size:12pt; margin:18pt 0 10pt; color:#111!important; }
+  .schengen-questionnaire__print section { break-inside:auto; }
+  .schengen-questionnaire__print p { margin:0 0 9pt; padding:0; font-size:10pt; line-height:1.45; color:#111!important; overflow-wrap:anywhere; break-inside:avoid-page; }
+  .schengen-questionnaire__print strong { font-weight:700; color:#111!important; }
+  .schengen-questionnaire__print span { color:#111!important; white-space:pre-wrap; }
+}
