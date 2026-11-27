@@ -10,6 +10,16 @@ import styles from "./Header.module.css";
 
 const reviewsUrl = process.env.NEXT_PUBLIC_REVIEWS_TG_URL?.trim() || "";
 const validReviewsUrl = /^https:\/\/t\.me\/[a-zA-Z0-9_+/-]+$/.test(reviewsUrl) ? reviewsUrl : "";
+const popularCountries = [
+  { slug: "usa", name: "США" },
+  { slug: "uk", name: "Англия" },
+  { slug: "australia", name: "Австралия" },
+  { slug: "japan", name: "Япония" },
+  { slug: "france", name: "Франция" },
+  { slug: "spain", name: "Испания" },
+  { slug: "italy", name: "Италия" },
+];
+
 const IconSearch = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.7" cy="10.7" r="6.4" stroke="currentColor" strokeWidth="1.7" /><path d="m15.6 15.6 5 5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" /></svg>;
 
 export default function Header() {
@@ -67,7 +77,7 @@ export default function Header() {
             {visasOpen && (
               <div className={styles.dropdown} id="visas-menu">
                 <div><p className={styles.menuHeading}>География Виз</p>{regions.map((region) => <Link key={region.slug} href={`/visas#${region.slug}`} onClick={closeAll}>{region.title}</Link>)}</div>
-                <div><p className={styles.menuHeading}>Популярные страны</p>{countries.map((country) => <Link key={country.slug} href={`/visas/${country.slug}`} onClick={closeAll}>{country.name}</Link>)}<Link className={styles.allLink} href="/visas" onClick={closeAll}>Все направления ↗</Link></div>
+                <div><p className={styles.menuHeading}>Популярные страны</p>{popularCountries.map((country) => <Link key={country.slug} href={`/visas/${country.slug}`} onClick={closeAll}>{country.name}</Link>)}<Link className={styles.allLink} href="/visas" onClick={closeAll}>Все направления ↗</Link></div>
               </div>
             )}
           </div>

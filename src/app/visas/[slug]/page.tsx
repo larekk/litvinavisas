@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { countries, regions } from "@/lib/data";
 import { CtaBand, Eyebrow, Steps } from "@/components/SectionParts";
+import { questionnaireSlugs } from "@/lib/countryQuestionnaires";
 import VisaPriceList from "@/components/VisaPriceList";
 
 const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -136,6 +137,21 @@ export default async function DirectionPage({ params }: Props) {
     <section className="page-hero"><div className="container"><div className="breadcrumbs"><Link href="/visas">Визы</Link><span> / </span><Link href={`/visas#${country.region}`}>{parent?.title}</Link><span> / </span><span>{country.name}</span></div><Eyebrow>ВИЗОВОЕ НАПРАВЛЕНИЕ</Eyebrow><h1>{country.title}</h1><p>{country.intro}</p><VisaPriceList slug={country.slug} /><Link className="button button-dark" href="/contacts#contact-form">Оставить заявку ↗</Link></div></section>
     <section className="section"><div className="container"><div className="section-heading"><h2>Варианты оформления</h2><p>Перечень ориентировочный. Подходящая категория зависит от гражданства, цели поездки и актуальных требований.</p></div><div className="info-grid">{country.types.map((item, index) => <article className="info-card" key={item.title}><span className="card-index">0{index + 1}</span><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></div></section>
     <section className="section soft-section"><div className="container two-col"><div><Eyebrow>КАК МЫ МОЖЕМ ПОМОЧЬ</Eyebrow><h2>Сопровождение<br />под вашу задачу.</h2></div><div className="body-copy"><p><strong>Полное сопровождение.</strong> Разбираем ситуацию, помогаем подготовить анкеты и комплект документов и объясняем порядок действий.</p><p><strong>Отдельные услуги.</strong> Можно обратиться за консультацией, заполнением или проверкой анкеты, подготовкой к подаче.</p><p className="fineprint">Визовые требования меняются. Перед подачей проверяйте действующие условия в официальных источниках.</p></div></div></section>
+    {questionnaireSlugs.some((item) => item === country.slug) && (
+      <section className="section soft-section" aria-label="Опросный лист">
+        <div className="container two-col">
+          <div>
+            <Eyebrow>АНКЕТА ДЛЯ ПОДГОТОВКИ</Eyebrow>
+            <h2>Опросный лист<br />для вашей визы.</h2>
+          </div>
+          <div className="body-copy">
+            <p>Подготовили отдельный опросник для этого направления. Заполненные ответы можно скачать в Word, сохранить в PDF с выделяемым текстом или скопировать целиком.</p>
+            <Link className="button button-dark" href={`/questionnaire/${country.slug}/`}>Заполнить опросный лист ↗</Link>
+            <p className="fineprint">Анкета не отправляется автоматически. Ответы сохраняйте на своём устройстве.</p>
+          </div>
+        </div>
+      </section>
+    )}
     <Steps title="Как проходит работа" />
     <CtaBand title={`Обсудим вашу поездку: ${country.name}`} />
   </>;
